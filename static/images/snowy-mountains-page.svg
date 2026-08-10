@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1050" preserveAspectRatio="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#cfdee4" stop-opacity=".9"/>
+      <stop offset=".45" stop-color="#dce7e8" stop-opacity=".78"/>
+      <stop offset=".78" stop-color="#e9ece5" stop-opacity=".52"/>
+      <stop offset="1" stop-color="#f2eee4" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="distant" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#a8c1cc" stop-opacity=".68"/>
+      <stop offset="1" stop-color="#cbdadd" stop-opacity=".35"/>
+    </linearGradient>
+    <linearGradient id="middle" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#789eb5" stop-opacity=".78"/>
+      <stop offset="1" stop-color="#a9c3cc" stop-opacity=".54"/>
+    </linearGradient>
+    <linearGradient id="foreground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9fbac4" stop-opacity=".7"/>
+      <stop offset="1" stop-color="#dce5e3" stop-opacity=".18"/>
+    </linearGradient>
+    <linearGradient id="cream-fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2eee4" stop-opacity="0"/>
+      <stop offset=".62" stop-color="#f2eee4" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#f2eee4" stop-opacity=".94"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1600" height="1050" fill="url(#sky)"/>
+
+  <!-- Soft, distant ridges keep the upper background spacious. -->
+  <path fill="url(#distant)" d="M0 430 122 314l88 60 144-124 122 101 143-158 129 111 154-119 122 102 147-139 129 124 126-71 194 134v370H0Z"/>
+  <path fill="#dce7e8" opacity=".54" d="M0 492 151 377l115 78 154-135 140 115 163-145 120 113 160-107 126 100 157-118 134 111 140-80 140 95v318H0Z"/>
+
+  <!-- Main snow-covered range, inspired by a soft illustrated alpine scene. -->
+  <path fill="url(#middle)" d="M0 608 137 494l119 60 135-158 103 84 180-244 143 174 113-137 87 102 127-199 127 160 137-116 112 140 180-106v557H0Z"/>
+  <path fill="#c9dce0" opacity=".88" d="m172 536 82 18 135-158 103 84-66-18-86 91-113 5Zm389-42 113-158 143 174-78-53-67 66-89-29Zm490-78 127-199 127 160-98-60-75 85-81 14Zm278 31 137-116 112 140-94-68-77 91-78-47Z"/>
+  <path fill="#eff2ed" opacity=".95" d="m300 474 107-78 84 35-55 10-46 69-49 22Zm300-98 104-140 86 105-61-31-51 58-50 8Zm421-71 74-127 86 104-60-33-52 62-48 11Zm274 121 94-80 70 87-54-35-50 44-60 9Z"/>
+  <path fill="#6f95ad" opacity=".42" d="m137 494 119 60-83-11-76 52-97 13Zm354-14 180-244 41 174-82-87-73 126Zm383 9 113-137 45 102-74-47-43 71Zm214-133 127-199 28 156-59-72-48 96Z"/>
+
+  <!-- Snowy foothills give the base a gentle, continuous transition. -->
+  <path fill="url(#foreground)" d="M0 660c150-85 262-74 393-26 127 47 223 45 350-18 145-72 267-37 394 21 156 71 276 23 463-80v493H0Z"/>
+  <path fill="#eff2ed" opacity=".78" d="M0 710c159-70 275-31 410 17 111 39 211 32 326-27 143-73 270-42 397 12 155 67 278 25 467-70v170H0Z"/>
+  <path fill="#c3d9de" opacity=".42" d="M0 805c152-68 284-56 423-4 137 51 243 42 365-16 135-64 257-33 383 20 170 72 291 22 429-52v132H0Z"/>
+
+  <!-- Sparse evergreen silhouettes add a small amount of character without noise. -->
+  <g fill="#5b8195" opacity=".55">
+    <path d="m75 695 13-40 13 40h-8l15 30H59l15-30Z"/>
+    <path d="m111 715 10-31 11 31h-7l12 24H96l12-24Z"/>
+    <path d="m150 704 14-45 15 45h-9l16 34h-42l16-34Z"/>
+    <path d="m1350 730 15-48 15 48h-9l17 37h-46l17-37Z"/>
+    <path d="m1394 711 11-35 12 35h-7l13 27h-37l12-27Z"/>
+    <path d="m1450 724 14-44 14 44h-8l16 34h-44l16-34Z"/>
+    <path d="m1490 705 10-31 11 31h-7l12 24h-36l12-24Z"/>
+  </g>
+
+  <!-- The lower edge dissolves into the existing warm workshop background. -->
+  <rect width="1600" height="1050" fill="url(#cream-fade)"/>
+</svg>

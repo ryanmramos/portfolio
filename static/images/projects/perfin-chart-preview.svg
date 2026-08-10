@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Perfin budget chart preview</title>
+  <desc id="desc">A conceptual Perfin budget overview showing four pie-chart panels for overall spending, utilities, necessities, and discretionary income.</desc>
+  <defs>
+    <filter id="card-shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#1e3d30" flood-opacity=".13"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="760" fill="#e1e6cd"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#1d2b2d">
+    <text x="76" y="72" font-size="16" font-weight="700" letter-spacing="3">PERFIN · BUDGET OVERVIEW</text>
+    <text x="76" y="110" font-family="Georgia, serif" font-size="31" font-weight="700">A clearer next step for your money.</text>
+    <text x="76" y="140" font-size="14" fill="#60706a">Conceptual preview based on the project’s Chart.js pie-chart data.</text>
+  </g>
+  <g filter="url(#card-shadow)">
+    <rect x="76" y="180" width="500" height="244" rx="16" fill="#fffdf7"/>
+    <rect x="624" y="180" width="500" height="244" rx="16" fill="#fffdf7"/>
+    <rect x="76" y="466" width="500" height="244" rx="16" fill="#fffdf7"/>
+    <rect x="624" y="466" width="500" height="244" rx="16" fill="#fffdf7"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#1d2b2d">
+    <text x="108" y="220" font-size="12" font-weight="700" letter-spacing="2" fill="#477358">OVERALL</text>
+    <text x="656" y="220" font-size="12" font-weight="700" letter-spacing="2" fill="#477358">UTILITIES</text>
+    <text x="108" y="506" font-size="12" font-weight="700" letter-spacing="2" fill="#477358">NECESSITIES</text>
+    <text x="656" y="506" font-size="12" font-weight="700" letter-spacing="2" fill="#477358">DISCRETIONARY</text>
+  </g>
+  <g transform="translate(210 322) rotate(-90)">
+    <circle r="74" fill="none" stroke="#e3b34b" stroke-width="38" stroke-dasharray="446 50"/>
+    <circle r="74" fill="none" stroke="#3c8c72" stroke-width="38" stroke-dasharray="42 454" stroke-dashoffset="-446"/>
+    <circle r="74" fill="none" stroke="#c66b4c" stroke-width="38" stroke-dasharray="26 470" stroke-dashoffset="-488"/>
+    <circle r="74" fill="none" stroke="#7d99a8" stroke-width="38" stroke-dasharray="4 492" stroke-dashoffset="-514"/>
+  </g>
+  <g transform="translate(758 322) rotate(-90)">
+    <circle r="74" fill="none" stroke="#e3b34b" stroke-width="38" stroke-dasharray="164 332"/>
+    <circle r="74" fill="none" stroke="#3c8c72" stroke-width="38" stroke-dasharray="164 332" stroke-dashoffset="-164"/>
+    <circle r="74" fill="none" stroke="#c66b4c" stroke-width="38" stroke-dasharray="164 332" stroke-dashoffset="-328"/>
+  </g>
+  <g transform="translate(210 608) rotate(-90)">
+    <circle r="74" fill="none" stroke="#3c8c72" stroke-width="38" stroke-dasharray="248 248"/>
+    <circle r="74" fill="none" stroke="#c66b4c" stroke-width="38" stroke-dasharray="248 248" stroke-dashoffset="-248"/>
+  </g>
+  <g transform="translate(758 608)">
+    <circle r="74" fill="none" stroke="#e3b34b" stroke-width="38"/>
+    <circle r="43" fill="#fffdf7"/>
+    <text y="-2" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#1d2b2d">$8,649</text>
+    <text y="20" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#60706a">flexible</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="12" fill="#53615c">
+    <rect x="330" y="252" width="9" height="9" fill="#e3b34b"/><text x="347" y="261">Discretionary · $8,649</text>
+    <rect x="330" y="275" width="9" height="9" fill="#3c8c72"/><text x="347" y="284">Rent · $820</text>
+    <rect x="330" y="298" width="9" height="9" fill="#c66b4c"/><text x="347" y="307">Needs · $500</text>
+    <rect x="330" y="321" width="9" height="9" fill="#7d99a8"/><text x="347" y="330">Utilities · $31</text>
+    <rect x="878" y="252" width="9" height="9" fill="#e3b34b"/><text x="895" y="261">Electricity · $10.33</text>
+    <rect x="878" y="275" width="9" height="9" fill="#3c8c72"/><text x="895" y="284">Water · $10.33</text>
+    <rect x="878" y="298" width="9" height="9" fill="#c66b4c"/><text x="895" y="307">Gas · $10.33</text>
+    <rect x="330" y="538" width="9" height="9" fill="#3c8c72"/><text x="347" y="547">Food · $250</text>
+    <rect x="330" y="561" width="9" height="9" fill="#c66b4c"/><text x="347" y="570">Transportation · $250</text>
+    <rect x="878" y="538" width="9" height="9" fill="#e3b34b"/><text x="895" y="547">Miscellaneous · $8,649</text>
+  </g>
+</svg>
