@@ -16,6 +16,9 @@ media:
     src: /images/projects/loquela-context-wide.svg
     alt: Loquela contextual learning preview showing a lookup for sobremesa
     label: Contextual learning preview
+  - type: slides
+    src: /presentations/loquela-presentation.pptx
+    label: View presentation
 links:
   - label: Site link
     href: https://loquela-edge-production.up.railway.app/login
