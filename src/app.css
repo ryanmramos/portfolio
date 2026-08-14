@@ -80,6 +80,8 @@ h2, h3, p { margin-top: 0; }
 .project-preview--perfin { background: #d8b3a4; color: #713d31; }
 .project-preview--loquela { width: 100%; min-height: 174px; aspect-ratio: 1.55 / 1; justify-self: stretch; background: #126a3f; }
 .project-preview--loquela img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; object-position: center; background: #126a3f; }
+.project-preview--ftms-treadmill { background: #707272; }
+.project-preview--ftms-treadmill img { object-fit: contain; object-position: center; background: #707272; }
 .project-open .project-preview { outline: 1px solid rgba(178, 78, 50, .7); outline-offset: 5px; }
 .project-details { display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, .45fr); gap: 54px; padding: 15px 0 43px 39px; }
 .project-details--solo { grid-template-columns: 1fr; }

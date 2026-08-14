@@ -1,6 +1,7 @@
 import type { Component } from 'svelte';
 import type { Project, ProjectMetadata } from '$lib/types';
 import LoquelaContent, { metadata as loquelaMetadata } from './projects/loquela.md';
+import FtmsTreadmillContent, { metadata as ftmsTreadmillMetadata } from './projects/ftms-treadmill.md';
 import FtdContent, { metadata as ftdMetadata } from './projects/ftd.md';
 import PerfinContent, { metadata as perfinMetadata } from './projects/perfin.md';
 
@@ -13,7 +14,7 @@ function attachContent(metadata: Record<string, unknown>, content: Component): P
 
 export const projects: Project[] = [
   attachContent(loquelaMetadata, LoquelaContent),
+  attachContent(ftmsTreadmillMetadata, FtmsTreadmillContent),
   attachContent(ftdMetadata, FtdContent),
   attachContent(perfinMetadata, PerfinContent)
 ];
-
