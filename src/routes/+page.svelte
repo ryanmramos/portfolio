@@ -98,7 +98,7 @@
 
 <div class="site-shell" id="top">
   <div class="mountain-backdrop" aria-hidden="true">
-    <img src={`${base}/images/snowy-mountains-page.svg`} alt="" />
+    <img src={`${base}/images/alpine-landscape.svg`} alt="" />
   </div>
   <header class="masthead">
     <nav class="site-nav" aria-label="Primary navigation">
