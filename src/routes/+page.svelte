@@ -1,6 +1,7 @@
 <script lang="ts">
   import { base } from '$app/paths';
   import { onDestroy, onMount } from 'svelte';
+  import { cubicOut } from 'svelte/easing';
   import { projects } from '$lib/content/projects';
 
   const email = 'ryan.ramosenhs@gmail.com';
@@ -13,6 +14,7 @@
   let copyStatus = '';
   let copyTimer: ReturnType<typeof setTimeout> | undefined;
   let canAutoplayPreview = false;
+  let prefersReducedMotion = false;
   let theme: Theme = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
     ? 'dark'
     : 'light';
@@ -20,6 +22,27 @@
 
   function toggleProject(slug: string) {
     openProject = openProject === slug ? null : slug;
+  }
+
+  function detailTransition(node: HTMLElement) {
+    const duration = prefersReducedMotion ? 0 : 240;
+    const computedStyle = getComputedStyle(node);
+    const naturalHeight = node.getBoundingClientRect().height;
+    const paddingTop = Number.parseFloat(computedStyle.paddingTop) || 0;
+    const paddingBottom = Number.parseFloat(computedStyle.paddingBottom) || 0;
+
+    return {
+      duration,
+      easing: cubicOut,
+      css: (t: number) => [
+        `height: ${naturalHeight * t}px`,
+        `padding-top: ${paddingTop * t}px`,
+        `padding-bottom: ${paddingBottom * t}px`,
+        'overflow: hidden',
+        `opacity: ${t}`,
+        `transform: translateY(${(1 - t) * -5}px)`
+      ].join(';')
+    };
   }
 
   function mediaUrl(src: string) {
@@ -77,6 +100,7 @@
 
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const updateMotionPreference = () => {
+      prefersReducedMotion = motionQuery.matches;
       canAutoplayPreview = !motionQuery.matches;
     };
 
@@ -234,6 +258,7 @@
                 class="project-details"
                 id={`project-details-${project.slug}`}
                 aria-labelledby={`project-title-${project.slug}`}
+                transition:detailTransition
               >
                 <div class="project-markdown">
                   <svelte:component this={project.content} />
