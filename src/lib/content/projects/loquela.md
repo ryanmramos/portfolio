@@ -5,32 +5,40 @@ status: In progress
 timeframe: "2026"
 visibility: private
 previewLabel: product preview
-summary: A language-learning platform that turns everyday content into reusable language practice.
-contribution: Building the Spring Boot API and Angular app for invite-only language practice.
+summary: A local-first desktop app that turns text, videos, and books into contextual language-learning cards.
+contribution: Building the complete source-to-card workflow, with local search, video clips, and Anki export.
 technologies:
-  - Spring Boot
-  - PostgreSQL
-  - Angular
-  - MinIO
+  - Electron
+  - Svelte
+  - TypeScript
+  - SQLite
+  - Drizzle
+  - Zod
 media:
   - type: image
-    src: /images/projects/loquela-context-wide.svg
-    alt: Loquela contextual learning preview showing a lookup for sobremesa
-    label: Contextual learning preview
-  - type: slides
-    src: /presentations/loquela-presentation.pptx
-    label: Open Loquela presentation
-links:
-  - label: Open Loquela (invite-only)
-    href: https://loquela-edge-production.up.railway.app/login
+    src: /images/projects/loquela-home-light.png
+    darkSrc: /images/projects/loquela-home-dark.png
+    alt: Loquela home screen with language-study decks and controls for sources, search, and jobs
+    label: Quiet Table home screen
+links: []
 ---
 
 #### Overview
 
-Loquela is a language-learning platform designed to make useful practice easier to build and revisit. It combines a Spring Boot API with an independently built Angular web application.
+Loquela is a language-learning desktop app for macOS and Windows. It brings source material, vocabulary lookup, card creation, and Anki export into one workflow. Study data stays on your computer, with no account required. The repository is private.
 
-Access is currently invite-only while the project is still in testing.
+#### Study workflow
+
+Import pasted text, public YouTube videos, PDFs, and EPUBs. Read parsed text or search across your library to find words in context. Dictionary lookup covers Spanish and English through RAE and Wiktionary, and DeepL translates a selected passage on request.
+
+Turn a selection into an editable card with its context and attribution. For YouTube material, preview and trim a video clip to keep with the card. Cards preserve their source context even if the original changes or disappears.
+
+Organize cards into decks, share a card across several decks, or duplicate it to edit independently. Export a deck to Anki as an `.apkg` package with its study directions and media. Complete and data-only archives let you move your library between computers.
 
 #### Technical notes
 
-PostgreSQL stores application data, while MinIO provides S3-compatible object storage for local development. Optional workflows support Anki package exports and YouTube subtitle ingestion.
+Electron Forge packages the app, with Svelte, TypeScript, and Vite in the renderer. The main process owns local SQLite storage through Drizzle, while FTS5 indexes passages for search. A narrow preload bridge and Zod-validated contracts keep filesystem, database, and credential access outside the renderer.
+
+Worker threads parse source material. Queued jobs expose progress, cancellation, and retries. Bundled yt-dlp and FFmpeg tools handle YouTube subtitles and video clips, while provider credentials use operating-system storage. Dictionary, translation, and YouTube requests connect to external services.
+
+Source versions preserve imported snapshots and document locations. Updates wait for user approval and active jobs to finish, and database migrations run after an automatic backup.

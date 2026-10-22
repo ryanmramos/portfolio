@@ -179,7 +179,8 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .projects-heading .section-label { margin: 0; }
 .project-entry { position: sticky; top: calc(14px + var(--i, 0) * 22px); margin-bottom: 40px; padding: 0 32px; border: 1px solid var(--border); border-radius: 2px; background: var(--surface); box-shadow: 0 -18px 40px -22px var(--shadow); }
 .project-entry.project-open { position: relative; top: auto; }
-.project-row { display: grid; grid-template-columns: minmax(0, 1fr) 290px; gap: 54px; align-items: center; padding: 34px 0 30px; }
+.project-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 290px); gap: 54px; align-items: center; padding: 34px 0 30px; transition: grid-template-columns .36s cubic-bezier(.16, 1, .3, 1); }
+.project-open .project-row { grid-template-columns: minmax(0, 1fr) minmax(0, 56%); }
 .project-copy { position: relative; min-width: 0; padding-left: 40px; }
 .project-index { position: absolute; top: 1px; left: 0; color: var(--accent); font-family: 'DM Mono', monospace; font-size: .75rem; }
 .project-meta { display: flex; flex-wrap: wrap; gap: 7px; font-size: .66rem; }
@@ -203,8 +204,8 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .preview-caption { display: grid; gap: 7px; padding: 16px; font-family: 'DM Mono', monospace; font-size: .66rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
 .project-preview--ftd { background: var(--preview-moss); color: var(--preview-moss-ink); }
 .project-preview--perfin { background: var(--preview-rose); color: var(--preview-rose-ink); }
-.project-preview--loquela { background: var(--preview-forest); }
-.project-preview--loquela img { width: 100%; height: 100%; aspect-ratio: auto; object-fit: contain; object-position: center; background: var(--preview-forest); }
+.project-preview--loquela { aspect-ratio: 1.6; background: var(--surface); }
+.project-preview--loquela img { object-fit: contain; }
 .project-preview--ftms-treadmill { background: var(--preview-slate); }
 .project-preview--ftms-treadmill img { object-fit: contain; object-position: center; background: var(--preview-slate); }
 .project-open .project-preview { border-color: var(--accent-border); }
@@ -246,6 +247,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
   .projects-heading { display: block; margin-bottom: 24px; }
   .projects-heading .section-label { margin-bottom: 20px; }
   .project-row, .project-row--with-preview { grid-template-columns: 1fr; gap: 24px; }
+  .project-open .project-row { grid-template-columns: 1fr; }
   .project-entry { position: relative; top: auto; padding: 0 18px; margin-bottom: 24px; }
   .project-copy { display: block; padding-left: 0; }
   .project-index { position: static; display: block; margin-bottom: 10px; }

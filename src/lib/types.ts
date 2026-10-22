@@ -3,6 +3,7 @@ import type { Component } from 'svelte';
 export type ProjectMedia = {
   type: 'image' | 'video' | 'slides';
   src: string;
+  darkSrc?: string;
   poster?: string;
   alt?: string;
   label?: string;

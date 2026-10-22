@@ -1,8 +1,9 @@
 <script lang="ts">
   import { base } from '$app/paths';
-  import { onDestroy, onMount } from 'svelte';
+  import { onDestroy, onMount, tick } from 'svelte';
   import { cubicOut } from 'svelte/easing';
   import { projects } from '$lib/content/projects';
+  import type { ProjectMedia } from '$lib/types';
   import Mountains from '$lib/mountains/Mountains.svelte';
   import ContourBand from '$lib/ContourBand.svelte';
   import ElevationGauge from '$lib/ElevationGauge.svelte';
@@ -19,9 +20,7 @@
   let copyTimer: ReturnType<typeof setTimeout> | undefined;
   let canAutoplayPreview = false;
   let prefersReducedMotion = false;
-  let theme: Theme = typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? 'dark'
-    : 'light';
+  let theme: Theme = 'light';
   $: themeColor = theme === 'dark' ? '#1d1a16' : '#f2eee4';
 
   function toggleProject(slug: string) {
@@ -51,6 +50,10 @@
 
   function mediaUrl(src: string) {
     return src.startsWith('http') ? src : `${base}${src}`;
+  }
+
+  function mediaSource(media: ProjectMedia, theme: Theme) {
+    return mediaUrl(theme === 'dark' && media.darkSrc ? media.darkSrc : media.src);
   }
 
   async function copyEmail() {
@@ -85,7 +88,13 @@
   // crossfade between themes with the view transitions api where it exists
   function toggleTheme() {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
-    if (document.startViewTransition && !prefersReducedMotion) document.startViewTransition(() => applyTheme(next));
+    if (document.startViewTransition && !prefersReducedMotion) document.startViewTransition(async () => {
+      applyTheme(next);
+      await tick();
+      await Promise.all(
+        Array.from(document.querySelectorAll<HTMLImageElement>('.project-preview img[data-theme-image="true"]'), image => image.decode().catch(() => {}))
+      );
+    });
     else applyTheme(next);
   }
 
@@ -220,7 +229,8 @@
                 {#if project.media.length}
                   {#if preview.type === 'image'}
                     <img
-                      src={mediaUrl(preview.src)}
+                      src={mediaSource(preview, theme)}
+                      data-theme-image={Boolean(preview.darkSrc)}
                       alt={preview.alt ?? preview.label ?? `${project.title} preview`}
                       loading={index === 0 ? 'eager' : 'lazy'}
                       decoding="async"
@@ -281,8 +291,8 @@
                       <div class="media-gallery">
                         {#each project.media as media}
                           {#if media.type === 'image'}
-                            <a class="media-image" href={mediaUrl(media.src)} target="_blank" rel="noreferrer">
-                              <img src={mediaUrl(media.src)} alt={media.alt ?? media.label ?? `${project.title} preview`} loading="lazy" />
+                            <a class="media-image" href={mediaSource(media, theme)} target="_blank" rel="noreferrer">
+                              <img src={mediaSource(media, theme)} alt={media.alt ?? media.label ?? `${project.title} preview`} loading="lazy" />
                             </a>
                           {:else if media.type === 'video'}
                             <video class="media-video" controls preload="metadata">
