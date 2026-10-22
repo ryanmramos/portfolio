@@ -3,6 +3,10 @@
   import { onDestroy, onMount } from 'svelte';
   import { cubicOut } from 'svelte/easing';
   import { projects } from '$lib/content/projects';
+  import Mountains from '$lib/mountains/Mountains.svelte';
+  import ContourBand from '$lib/ContourBand.svelte';
+  import ElevationGauge from '$lib/ElevationGauge.svelte';
+  import { tilt } from '$lib/tilt';
 
   const email = 'ryan.ramosenhs@gmail.com';
   const obfuscatedEmail = 'ryan.ramosenhs [at] gmail (dot) com';
@@ -78,8 +82,11 @@
     }
   }
 
+  // crossfade between themes with the view transitions api where it exists
   function toggleTheme() {
-    applyTheme(theme === 'dark' ? 'light' : 'dark');
+    const next: Theme = theme === 'dark' ? 'light' : 'dark';
+    if (document.startViewTransition && !prefersReducedMotion) document.startViewTransition(() => applyTheme(next));
+    else applyTheme(next);
   }
 
   onDestroy(() => {
@@ -120,9 +127,11 @@
   <meta name="theme-color" content={themeColor} />
 </svelte:head>
 
+<ElevationGauge />
+
 <div class="site-shell" id="top">
   <div class="mountain-backdrop" aria-hidden="true">
-    <img src={`${base}/images/alpine-landscape.svg`} alt="" />
+    <Mountains />
   </div>
   <header class="masthead">
     <nav class="site-nav" aria-label="Primary navigation">
@@ -146,10 +155,11 @@
     </nav>
 
     <div class="hero-copy">
-      <p class="eyebrow">Backend systems <span>·</span> APIs <span>·</span> useful products</p>
+      <p class="eyebrow">Hi, I'm Ryan.</p>
       <h1 class="hero-description">
-        I build reliable backend systems and APIs for products people rely on.
+        I like building things that help people <em>better themselves.</em>
       </h1>
+      <p class="hero-sub">I work on backend services for a payments team, and I work on my own projects on the side.</p>
       <div class="profile-links" aria-label="External profiles and email">
         <a href="https://github.com/ryanmramos" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
         <a href="https://www.linkedin.com/in/ryanmramos/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
@@ -166,6 +176,7 @@
 
   <main>
     <section class="projects-section content-section" id="projects" aria-label="Selected work">
+      <ContourBand seed={3} />
       <div class="projects-heading">
         <h2 class="section-label">Projects</h2>
       </div>
@@ -173,7 +184,7 @@
       <div class="project-list">
         {#each projects as project, index}
           {@const preview = project.media[0]}
-          <article class:project-open={openProject === project.slug} class="project-entry">
+          <article class:project-open={openProject === project.slug} class="project-entry" style:--i={index}>
             <div class="project-row project-row--with-preview">
               <div class="project-copy">
                 <div class="project-index">0{index + 1}</div>
@@ -205,7 +216,7 @@
                   <span aria-hidden="true">{openProject === project.slug ? '−' : '+'}</span>
                 </button>
               </div>
-              <figure class={`project-preview project-preview--${project.slug}`}>
+              <figure class={`project-preview project-preview--${project.slug}`} use:tilt>
                 {#if project.media.length}
                   {#if preview.type === 'image'}
                     <img
