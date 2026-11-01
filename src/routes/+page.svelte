@@ -7,7 +7,7 @@
   import Mountains from '$lib/mountains/Mountains.svelte';
   import ContourBand from '$lib/ContourBand.svelte';
   import ElevationGauge from '$lib/ElevationGauge.svelte';
-  import { tilt } from '$lib/tilt';
+  import LoquelaMark from '$lib/LoquelaMark.svelte';
 
   const email = 'ryan.ramosenhs@gmail.com';
   const obfuscatedEmail = 'ryan.ramosenhs [at] gmail (dot) com';
@@ -128,7 +128,7 @@
 </script>
 
 <svelte:head>
-  <title>Ryan Matthew Ramos — Software Engineer</title>
+  <title>Ryan Matthew Ramos | Software Engineer</title>
   <meta
     name="description"
     content="Ryan Matthew Ramos is a software engineer focused on backend systems, APIs, and useful products."
@@ -166,9 +166,9 @@
     <div class="hero-copy">
       <p class="eyebrow">Hi, I'm Ryan.</p>
       <h1 class="hero-description">
-        I like building things that help people <em>better themselves.</em>
+        Software engineer. I build tools and applications <em>I use myself.</em>
       </h1>
-      <p class="hero-sub">I work on backend services for a payments team, and I work on my own projects on the side.</p>
+      <p class="hero-sub">I work on backend services for a payments team.</p>
       <div class="profile-links" aria-label="External profiles and email">
         <a href="https://github.com/ryanmramos" target="_blank" rel="noreferrer">GitHub <span>↗</span></a>
         <a href="https://www.linkedin.com/in/ryanmramos/" target="_blank" rel="noreferrer">LinkedIn <span>↗</span></a>
@@ -193,12 +193,15 @@
       <div class="project-list">
         {#each projects as project, index}
           {@const preview = project.media[0]}
-          <article class:project-open={openProject === project.slug} class="project-entry" style:--i={index}>
-            <div class="project-row project-row--with-preview">
+          <article class:project-open={openProject === project.slug} class="project-entry">
+            <div class="project-row">
               <div class="project-copy">
-                <div class="project-index">0{index + 1}</div>
                 <div class="project-meta">
                   <span>{project.status}</span>
+                  {#if project.award}
+                    <span>·</span>
+                    <span>{project.award}</span>
+                  {/if}
                   {#if project.event}
                     <span>·</span>
                     <span>{project.event}</span>
@@ -210,9 +213,8 @@
                     <span>Private repository</span>
                   {/if}
                 </div>
-                <h3 id={`project-title-${project.slug}`}>{project.title}</h3>
+                <h3 id={`project-title-${project.slug}`}>{#if project.slug === 'loquela'}<LoquelaMark />{/if}{project.title}</h3>
                 <p class="project-summary">{project.summary}</p>
-                <p class="project-contribution"><span>Project focus</span>{project.contribution}</p>
                 <p class="technology-line">{project.technologies.join(' · ')}</p>
                 <button
                   class="expand-button"
@@ -225,7 +227,7 @@
                   <span aria-hidden="true">{openProject === project.slug ? '−' : '+'}</span>
                 </button>
               </div>
-              <figure class={`project-preview project-preview--${project.slug}`} use:tilt>
+              <figure class={`project-preview project-preview--${project.slug}`}>
                 {#if project.media.length}
                   {#if preview.type === 'image'}
                     <img
@@ -290,15 +292,22 @@
                     {#if project.media.length}
                       <div class="media-gallery">
                         {#each project.media as media}
-                          {#if media.type === 'image'}
-                            <a class="media-image" href={mediaSource(media, theme)} target="_blank" rel="noreferrer">
-                              <img src={mediaSource(media, theme)} alt={media.alt ?? media.label ?? `${project.title} preview`} loading="lazy" />
-                            </a>
-                          {:else if media.type === 'video'}
-                            <video class="media-video" controls preload="metadata">
-                              <source src={mediaUrl(media.src)} />
-                              Your browser does not support embedded video.
-                            </video>
+                          {#if media.type === 'image' || media.type === 'video'}
+                            <figure class="media-item">
+                              {#if media.type === 'image'}
+                                <a class="media-image" href={mediaSource(media, theme)} target="_blank" rel="noreferrer">
+                                  <img src={mediaSource(media, theme)} alt={media.alt ?? media.label ?? `${project.title} preview`} loading="lazy" />
+                                </a>
+                              {:else}
+                                <video class="media-video" controls preload="metadata">
+                                  <source src={mediaUrl(media.src)} />
+                                  Your browser does not support embedded video.
+                                </video>
+                              {/if}
+                              {#if media.caption}
+                                <figcaption>{media.caption}</figcaption>
+                              {/if}
+                            </figure>
                           {:else}
                             <a class="media-slide-link" href={mediaUrl(media.src)} target="_blank" rel="noreferrer">
                               {media.label ?? 'View slides'} <span>↗</span>

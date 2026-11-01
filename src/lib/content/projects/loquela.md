@@ -5,8 +5,7 @@ status: In progress
 timeframe: "2026"
 visibility: private
 previewLabel: product preview
-summary: A local-first desktop app that turns text, videos, and books into contextual language-learning cards.
-contribution: Building the complete source-to-card workflow, with local search, video clips, and Anki export.
+summary: A local-first desktop app that turns text, videos, and books into language-learning cards, with local search, video clips, and Anki export.
 technologies:
   - Electron
   - Svelte
@@ -16,10 +15,30 @@ technologies:
   - Zod
 media:
   - type: image
-    src: /images/projects/loquela-home-light.png
-    darkSrc: /images/projects/loquela-home-dark.png
-    alt: Loquela home screen with language-study decks and controls for sources, search, and jobs
-    label: Quiet Table home screen
+    src: /images/projects/loquela-home-light.jpg
+    darkSrc: /images/projects/loquela-home-dark.jpg
+    alt: Loquela home screen with study decks on the card table
+    caption: Home. Decks sit on the card table, with the last deck ready to continue.
+  - type: image
+    src: /images/projects/loquela-deck-light.jpg
+    darkSrc: /images/projects/loquela-deck-dark.jpg
+    alt: A deck of cards with the Anki card preview beside it
+    caption: Deck. Each card keeps its source context, with a preview of the exported Anki card.
+  - type: image
+    src: /images/projects/loquela-search-light.jpg
+    darkSrc: /images/projects/loquela-search-dark.jpg
+    alt: Search results for a word with a card draft and dictionary senses
+    caption: Search. Find a word across your sources, pick dictionary senses, and draft a card.
+  - type: image
+    src: /images/projects/loquela-clip-light.jpg
+    darkSrc: /images/projects/loquela-clip-dark.jpg
+    alt: Trimming a YouTube clip around a search result
+    caption: Clip trim. Cut a YouTube clip to the captions around the word, to keep with the card.
+  - type: image
+    src: /images/projects/loquela-reader-light.jpg
+    darkSrc: /images/projects/loquela-reader-dark.jpg
+    alt: EPUB reader with a selected sentence and a create card popover
+    caption: Reader. Select a sentence in an EPUB to search it or turn it into a card.
 links: []
 ---
 

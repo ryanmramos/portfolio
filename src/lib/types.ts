@@ -7,6 +7,7 @@ export type ProjectMedia = {
   poster?: string;
   alt?: string;
   label?: string;
+  caption?: string;
 };
 
 export type ProjectLink = {
@@ -19,11 +20,11 @@ export type ProjectMetadata = {
   title: string;
   status: string;
   event?: string;
+  award?: string;
   timeframe: string;
   visibility: 'public' | 'private';
   previewLabel: string;
   summary: string;
-  contribution: string;
   technologies: string[];
   media: ProjectMedia[];
   links: ProjectLink[];

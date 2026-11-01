@@ -2,12 +2,12 @@
 slug: perfin
 title: Perfin
 status: Completed
+award: Capital One category winner
 event: HackRice 13
 timeframe: "2023"
 visibility: public
 previewLabel: demo thumbnail
-summary: A personal finance planner that builds a budget from income and location, then helps users adjust it.
-contribution: Built with a four-person team for HackRice 13 and recognized as a Capital One category winner.
+summary: A personal finance planner that builds a budget from income and location, then lets you adjust it through charts or a chat assistant.
 technologies:
   - Python
   - Flask

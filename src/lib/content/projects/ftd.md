@@ -5,8 +5,7 @@ status: Completed
 timeframe: "2023–2024"
 visibility: private
 previewLabel: gameplay video
-summary: A 2D factory-building and tower-defense game with a nine-level single-player campaign.
-contribution: Built with a four-person team to combine factory logistics and tower defense in a nine-level campaign.
+summary: A 2D factory-building and tower-defense game with a nine-level campaign, built by a four-person team.
 technologies:
   - Java
   - libGDX
@@ -15,7 +14,7 @@ technologies:
 media:
   - type: video
     src: /videos/ftd/ftd-gameplay.mp4
-    poster: /images/projects/ftd-overview.png
+    poster: /images/projects/ftd-gameplay-poster.jpg
     alt: FTD gameplay showing a factory layout, defensive towers, and enemy paths
     label: FTD gameplay video
   - type: video
