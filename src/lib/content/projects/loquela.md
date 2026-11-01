@@ -54,6 +54,18 @@ Turn a selection into an editable card with its context and attribution. For You
 
 Organize cards into decks, share a card across several decks, or duplicate it to edit independently. Export a deck to Anki as an `.apkg` package with its study directions and media. Complete and data-only archives let you move your library between computers.
 
+#### Comprehensible input
+
+Loquela is built entirely around comprehensible input. You acquire a language by understanding messages, not by studying its grammar or its rules. You listen to and read material you can mostly follow, and the context fills in the gaps.
+
+Stephen Krashen, American linguist and professor, developed this idea as the [Input Hypothesis](https://en.wikipedia.org/wiki/Input_hypothesis): learners progress in their knowledge of the language when they comprehend language input that is slightly more advanced than their current level. Krashen called this level of input "i+1", where "i" is the learner's interlanguage and "+1" is the next stage of language acquisition.
+
+The type of input you need to acquire a new language must meet this "i+1" criteria. Past that, input you enjoy works best. Loquela supports this by letting you watch and read what you like, then keep the few words worth reviewing along with the context they came from.
+
+- [Second Language Acquisition and Second Language Learning](https://www.sdkrashen.com/content/books/sl_acquisition_and_learning.pdf), Stephen Krashen (1981)
+- [Comprehensible Input Wiki](https://comprehensibleinputwiki.org/wiki/Main_Page)
+- [Matt vs Japan](https://www.youtube.com/channel/UCpf4BknRWAjb_oYIHoMDGVg), on learning a language through immersion
+
 #### Technical notes
 
 Electron Forge packages the app, with Svelte, TypeScript, and Vite in the renderer. The main process owns local SQLite storage through Drizzle, while FTS5 indexes passages for search. A narrow preload bridge and Zod-validated contracts keep filesystem, database, and credential access outside the renderer.
